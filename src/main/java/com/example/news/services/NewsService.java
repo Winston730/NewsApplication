@@ -46,7 +46,6 @@ public class NewsService {
     }
 
     private Image toImageEntity(MultipartFile file) throws IOException {
-        //comment
         Image image = new Image();
         image.setName(file.getName());
         image.setOriginalFileName(file.getOriginalFilename());
