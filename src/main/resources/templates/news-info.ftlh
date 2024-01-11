@@ -49,7 +49,9 @@
 <b>Название новости:</b> ${news.title} <br>
 <b>Новость:</b> <pre>${news.text}</pre><br>
 <b>Дата:</b> ${news.date} <br>
-<b>Автор новости:</b> ${news.author} <br>
+<b>Автор новости:</b> ${news.user.name} <br>
+
+
 <hr>
 
 <form action="/news/delete/${news.id}" method="post">

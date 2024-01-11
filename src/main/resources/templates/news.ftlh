@@ -47,20 +47,28 @@
 </head>
 
 <body>
-<h1><a href="/">Новости</a></h1>
-<h1> <a href="/login">Войти</a></h1>
-<form action="/logout" method="post">
-    <input type="hidden" name="_csrf" value="${_csrf.token}">
-    <input type="submit" value="ВЫЙТИ" />
-</form>
+<h1><a href="/">Новости</a></h1> <hr>
+
+<#if user.email??>
+    <h3>Имя пользователя: <i>${user.name}</i></h3>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
+        <input type="submit" value="ВЫЙТИ"/>
+    </form>
+
+<#else>
+    <h1><a href="/login">Войти</a></h1>
+</#if>
+
 <hr>
 <form action="/" method="get">
     Поиск по названию новости: <input type="text" name="title"> <br>
-    <input type="submit" value="Поиск" />
+    <input type="submit" value="Поиск"/>
 </form>
 
 <form action="/create" class="positioned" method="get">
-    <input type="submit" value="Добавить новость" />
+    <input type="hidden" name="_csrf" value="_csrf.token">
+    <input type="submit" value="Добавить новость"/>
 </form>
 
 <h4>Новости по всему миру</h4>
@@ -68,10 +76,13 @@
 <#list newss as news>
     <div>
         <p><b><a href="/news/${news.id}">${news.title}</a></b></p>
-        <img src="/images/${news.previewImageId}" alt="Превью новости" />
+        <img src="/images/${news.previewImageId}" alt="Превью новости"/>
         <br><br>
     </div>
+    <#else>
+    <h3> Новостей нет!</h3>
 </#list>
+
 <hr>
 </body>
 

@@ -24,8 +24,6 @@ public class News {
     private Long id;
     @Column(name = "title")
     private String title;
-    @Column(name = "author")
-    private String author;
     @Column(name = "text", columnDefinition = "LONGTEXT", length = 65555)
     private String text;
     @Column(name = "date")
@@ -35,6 +33,9 @@ public class News {
             mappedBy = "news")
     private List<Image> images = new ArrayList<>();
     private Long previewImageId;
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn
+    private User user;
     private LocalDateTime dateOfCreated;
 
     @PrePersist

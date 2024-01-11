@@ -46,13 +46,12 @@
 
 <body>
 <hr>
+
 <h3>Создать новость</h3>
+<#if user.email??>
 <form action="/news/create" method="post" enctype="multipart/form-data">
     <label for="title">Название новости:</label>
     <input type="text" name="title" id="title" required/><br>
-
-    <label for="author">Автор:</label>
-    <input type="text" name="author" id="author" required/><br>
 
     <label for="text">Текст:</label>
     <textarea name="text" id="text" rows="6" required></textarea><br>
@@ -68,9 +67,10 @@
 
     <label for="file3">Третье фото:</label>
     <input type="file" name="file3" id="file3" accept="image/*"/><br>
-
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
     <input type="submit" value="Добавить новость"/>
 </form>
+</#if>
 </body>
 
 </html>
