@@ -59,6 +59,9 @@
 <#else>
     <h1><a href="/login">Войти</a></h1>
 </#if>
+<#if user.isAdmin()>
+<a href="/admin">Панель администратора</a>
+</#if>
 
 <hr>
 <form action="/" method="get">

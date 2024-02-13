@@ -49,7 +49,7 @@
 <b>Название новости:</b> ${news.title} <br>
 <b>Новость:</b> <pre>${news.text}</pre><br>
 <b>Дата:</b> ${news.date} <br>
-<b>Автор новости:</b> ${news.user.name} <br>
+<b>Автор новости:</b> <a href="/user/${news.user.id} "> ${news.user.name} </a><br>
 
 
 <hr>
